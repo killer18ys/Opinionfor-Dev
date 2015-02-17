@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+
+
+	.ir {
+	    background-color: transparent;
+	    border: 0;
+	    overflow: hidden;
+	    /* IE 6/7 fallback */
+	    *text-indent: -9999px;
+	}
+
+	.ir:before {
+	    content: "";
+	    display: block;
+	    width: 0;
+	    height: 150%;
+	}
+
+	.logo{
+		width: 300px;
+		height: 60px;
+		background-image: url(logo.svg), none;
+		background-size: 300px;
+	}
+
+	.no-svg .logo{
+		background: url(logo.png) no-repeat;
+	}
+
+	</style>
+</head>
+<body class="no-svg">
+	
+	<h1 class="ir logo">
+		OpinionShare
+	</h1>
+
+
+</body>
+</html>
