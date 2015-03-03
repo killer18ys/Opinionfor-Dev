@@ -71,12 +71,15 @@
                                         $post_time = split(" ", $opinion->post_date)[1];
                                         $post_date = split("-", $post_date);
                                         $post_date = $post_date[2] .'.' . $post_date[1] . '.' .$post_date[0];
+
+                                        $name = $user_info->name ? $user_info->name : $user_info->username;
+                                        $avatar = $user_info->avatar ? $user_info->avatar : "profile-placeholder.png" ;
                                         
                                         echo "  <div class=\"opinion-wrapper left\">
                                                     <div class=\"user-info clearfix\">
-                                                        <img class=\"left\" src=\"img/layout/profile-placeholder.png\" alt=\"\">
+                                                        <img class=\"left\" src=\"img/profile_picture/". $avatar ."\" alt=\"". $avatar ."\">
                                                         <div class=\"info left\">
-                                                            <div class=\"name\">" . $user_info->name . "</div>
+                                                            <div class=\"name\">" . $name . "</div>
                                                             <div class=\"rating\">"; 
 
                                                                 for ($i=0; $i < $rating; $i++) { 

@@ -1,16 +1,6 @@
 <?php
 require_once 'core/init.php';
 
-
-// $url = new Url('/ooplr');
-
-// echo $url->getSegment(0);
-
-
-if(Session::exists('home')){
-	echo '<p>' .Session::flash('home') . '</p>';
-}
-
 $user = new User(); // current user
 
 if ($user->isLoggedIn()) {

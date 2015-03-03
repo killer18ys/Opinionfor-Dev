@@ -12,7 +12,13 @@
 
                     <li class="user-tag">
                         <a href="./settings-profile.php">
-                            <img src="img/temp-profile-pic.jpg" alt="profile-pic">
+                            <?php 
+                                if ($user->data()->avatar) {
+                                    echo "<img src=\"img/profile_picture/" . $user->data()->avatar . "\" alt=\"profile-pic\">";
+                                }else{
+                                    echo "<img src=\"img/profile_picture/profile-placeholder.png\" alt=\"profile-pic\">";
+                                }
+                            ?>
                             <span class="username"> <?php echo escape($user->data()->username);?> </span>
                         </a>
                     </li>

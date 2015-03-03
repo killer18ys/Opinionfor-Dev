@@ -29,7 +29,7 @@
 
 				$salt = Hash::salt(32);
 				
-				try {
+				
 					$user->create(array(
 						'username' => Input::get('username'),
 						'email' => Input::get('email'),
@@ -42,13 +42,15 @@
 						'group' => 1
 					));
 
-					Session::flash('Home', 'Your registration was successful!');
-					Redirect::to('feed.php');
+                    $login = $user->login(Input::get('username'), Input::get('password'), $remember);
 
-				} catch (Exception $e) {
-					die($e->getMessage());
-				}
+                    if($login){
+                        Session::flash('Home', 'Your registration was successful!');
+                        Redirect::to('feed.php');
+                    }
+
 			}else{
+
 				foreach ($validation->errors() as $error) {
 						echo $error . "<br>";
 					}	

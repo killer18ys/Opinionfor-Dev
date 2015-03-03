@@ -7,6 +7,10 @@ if(!$user->isLoggedIn()){
     Redirect::to('index.php');
 }
 
+if(Session::exists('Error')){
+    echo '<p>' .Session::flash('Error') . '</p>';
+}
+
 if (Input::exists()) {
     if (Token::check(Input::get('token'))) {
         $validate = new Validate();
@@ -39,6 +43,8 @@ if (Input::exists()) {
         }
     }
 }
+
+
 
 ?>
 
@@ -83,53 +89,60 @@ if (Input::exists()) {
                         </div>
                    
                         <div class="profile-info-wrapper">
-                            <form action="" method="post">
                                 <div class="clearfix">
                                     <div class="container-small left">
-                                        <div class="upload-img-wrapper">
-                                            <div class="upload-img">
-                                                <img src="img/layout/profile-placeholder.png" alt="Profile_picture">
-                                            </div>
-
-                                            <input id="select_image" type="file" name="image">
-                                            <span class="btn btn-raised">Upload image</span>
+                                        <form action="upload.php" method="post" id="image_upload_form" enctype="multipart/form-data">
+                                            <div class="upload-img-wrapper">
+                                               <div class="upload-img">
+                                                 <?php 
+                                                       if ($user->data()->avatar) {
+                                                            echo "<img src=\"img/profile_picture/" . $user->data()->avatar . "\" alt=\"Profile_picture\">";
+                                                       }else{
+                                                            echo "<img src=\"img/profile_picture/profile-placeholder.png\" alt=\"profile_picture\">";
+                                                      }
+                                                  ?>
+                                                </div>
+                                                <input id="select_image" type="file" name="imageToUpload">
+                                                <span class="btn btn-raised">Upload image</span>
+                                        </form>
                                         </div>
                                     </div>
 
-                                    <div class="container-large right">
-                                        <fieldset>
-                                            <label for="name">Име</label>
-                                            <div class="form-item">
-                                                <label for="name">Enter your full name</label>
-                                                <input type="text" class="light" value="<?php echo escape($user->data()->name); ?>" id="name" name="name">
-                                                <p class="error-message"></p>
-                                            </div>
-                                        </fieldset>
+                                    <form action="" method="post">
+                                            <div class="container-large right">
+                                                <fieldset>
+                                                    <label for="name">Име</label>
+                                                    <div class="form-item">
+                                                        <label for="name">Enter your full name</label>
+                                                        <input type="text" class="light" value="<?php echo escape($user->data()->name); ?>" id="name" name="name">
+                                                        <p class="error-message"></p>
+                                                    </div>
+                                                </fieldset>
 
-                                        <fieldset>
-                                            <label for="bio_field">Биография</label>
-                                            <textarea name="bio_field" value="<?php echo escape($user->data()->bio); ?>" id="bio_field"></textarea>
-                                        </fieldset>
+                                                <fieldset>
+                                                    <label for="bio_field">Биография</label>
+                                                    <textarea name="bio_field" value="<?php echo escape($user->data()->bio); ?>" id="bio_field"></textarea>
+                                                </fieldset>
 
-                                        <fieldset>
-                                            <label for="email">Имейл адрес</label>
-                                            <div class="form-item">
-                                               <label for="email">Имейл адрес</label>
-                                                <input type="email" class="light" value="<?php echo escape($user->data()->email); ?>" id="email" name="email">
-                                               <p class="error-message"></p>
-                                            </div> 
-                                        </fieldset>
-                                    </div>    
-                                </div>
+                                                <fieldset>
+                                                    <label for="email">Имейл адрес</label>
+                                                    <div class="form-item">
+                                                       <label for="email">Имейл адрес</label>
+                                                        <input type="email" class="light" value="<?php echo escape($user->data()->email); ?>" id="email" name="email">
+                                                       <p class="error-message"></p>
+                                                    </div> 
+                                                </fieldset>
+                                            </div>    
+                                        </div>
 
-                                <div class="clearfix buttons-wrapp">
+                                        <div class="clearfix buttons-wrapp">
 
-                                    <div class="container-large right">
-                                        <input type="submit" class="btn btn-raised large green right" id="save_changes" value="Save changes">
-                                        <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
-                                    </div>   
-                                </div>
-                            </form>   
+                                            <div class="container-large right">
+                                                <input type="submit" class="btn btn-raised large green right" id="save_changes" value="Save changes">
+                                                <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
+                                            </div>   
+                                        </div>
+                                    </form>   
                         </div>
                     </div>
                 </div>

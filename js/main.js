@@ -150,6 +150,15 @@ $( document ).ready(function() {
 		});
 
 
+
+
+		$("input#select_image").change(function () {
+		    $('#image_upload_form').submit(); 
+		});
+
+
+
+
 // Custom Select End
 
 	// $('#category-tags ul li a').hover(function() {
