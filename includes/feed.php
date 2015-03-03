@@ -38,7 +38,7 @@
                         <div class="item clearfix">
                             <a class="selected" href="./feed.php">Мнения</a>
                             <a href="./give-opinion.php">Сподели мнение</a>
-                            <a href="./view-opinion.php">Виж мнения</a>
+                            <a href="./view-opinion.php">Потърси мнения</a>
                         </div>                        
                     </nav>
                 </div>
@@ -55,65 +55,56 @@
                             </div>
 
                             <div id="opinions-feed-wrapper clearfix">
-                                <div class="opinion-wrapper left">
-                                    <div class="user-info clearfix">
-                                        <img class="left" src="img/layout/profile-placeholder.png" alt="">
-                                        <div class="info left">
-                                            <div class="name">Lubo Ivanov</div>
-                                            <div class="rating">
-                                                <div class="star-rating star-rating-on"><a></a></div>
-                                                <div class="star-rating star-rating-on"><a></a></div>
-                                                <div class="star-rating star-rating-on"><a></a></div>
-                                                <div class="star-rating star-rating-on"><a></a></div>
-                                                <div class="star-rating"><a></a></div>
-                                            </div>
+                                <?php 
 
-                                            <div class="post-date">2 day ago</div>
-                                        </div>
-                                    </div>
-                                    <h3 class="item-name"><a href="#">Product name</a></h3>
-                                    <p class="opinion-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam id laborum, alias neque fugiat ad mollitia tempore officiis quam sit.   </p>
-                                </div>
+                                    $query_string = "SELECT * FROM opinions ORDER BY post_date DESC";
+                                    $opinions = $db->query($query_string)->results();
 
-                            <div class="opinion-wrapper left">
-                                    <div class="user-info clearfix">
-                                        <img class="left" src="img/layout/profile-placeholder.png" alt="">
-                                        <div class="info left">
-                                            <div class="name">Lubo Ivanov</div>
-                                            <div class="rating">
-                                                <div class="star-rating star-rating-on"><a></a></div>
-                                                <div class="star-rating star-rating-on"><a></a></div>
-                                                <div class="star-rating star-rating-on"><a></a></div>
-                                                <div class="star-rating star-rating-on"><a></a></div>
-                                                <div class="star-rating"><a></a></div>
-                                            </div>
+                                    foreach ($opinions as $opinion) {
+                                        $user_info = $db->get("users", array("id", "=", $opinion->user_id))->first();
 
-                                            <div class="post-date">2 day ago</div>
-                                        </div>
-                                    </div>
-                                    <h3 class="item-name"><a href="#">Product name</a></h3>
-                                    <p class="opinion-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam id laborum, alias neque fugiat ad mollitia tempore officiis quam sit.   </p>
-                                </div>
+                                        $rating = ($opinion->q1 + $opinion->q2 + $opinion->q3 + $opinion->q4 + $opinion->q5)/5;
+                                        $rating = round($rating, 0, PHP_ROUND_HALF_UP);
+                                        $stars_off = 5 - $rating;
 
-                                <div class="opinion-wrapper left">
-                                    <div class="user-info clearfix">
-                                        <img class="left" src="img/layout/profile-placeholder.png" alt="">
-                                        <div class="info left">
-                                            <div class="name">Lubo Ivanov</div>
-                                            <div class="rating">
-                                                <div class="star-rating star-rating-on"><a></a></div>
-                                                <div class="star-rating star-rating-on"><a></a></div>
-                                                <div class="star-rating star-rating-on"><a></a></div>
-                                                <div class="star-rating star-rating-on"><a></a></div>
-                                                <div class="star-rating"><a></a></div>
-                                            </div>
+                                        $post_date = split(" ", $opinion->post_date)[0];
+                                        $post_time = split(" ", $opinion->post_date)[1];
+                                        $post_date = split("-", $post_date);
+                                        $post_date = $post_date[2] .'.' . $post_date[1] . '.' .$post_date[0];
+                                        
+                                        echo "  <div class=\"opinion-wrapper left\">
+                                                    <div class=\"user-info clearfix\">
+                                                        <img class=\"left\" src=\"img/layout/profile-placeholder.png\" alt=\"\">
+                                                        <div class=\"info left\">
+                                                            <div class=\"name\">" . $user_info->name . "</div>
+                                                            <div class=\"rating\">"; 
 
-                                            <div class="post-date">2 day ago</div>
-                                        </div>
-                                    </div>
-                                    <h3 class="item-name"><a href="#">Product name</a></h3>
-                                    <p class="opinion-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam id laborum, alias neque fugiat ad mollitia tempore officiis quam sit.   </p>
-                                </div>
+                                                                for ($i=0; $i < $rating; $i++) { 
+                                                                    echo "<div class=\"star-rating star-rating-on\"><a></a></div>";
+                                                                }
+
+                                                                for ($i=0; $i < $stars_off ; $i++) { 
+                                                                    echo "<div class=\"star-rating\"><a></a></div>";
+                                                                }
+
+                                        echo "
+                                                            </div>
+
+                                                            <div class=\"post-date\">". $post_date ."</div>
+                                                        </div>
+                                                    </div>
+                                                    <h3 class=\"item-name\"><a href=\"#\">" . $opinion->category ." - " . $opinion->name . "</a></h3>
+                                                    <p class=\"opinion-text\">" .$opinion->opinion . "</p>
+                                                </div>";              
+
+
+
+
+
+                                    }
+
+
+                                 ?>
                             </div>
                         </div>
 

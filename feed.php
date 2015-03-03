@@ -6,6 +6,8 @@ if(Session::exists('home')){
 }
 
 $user = new User(); // current user
+$db = DB::getInstance();
+$db->query("SET NAMES utf8");
 
 if ($user->isLoggedIn()) {
 	include "includes/feed.php";

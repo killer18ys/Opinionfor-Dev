@@ -101,7 +101,7 @@
             </div>
         </section>
 
-        <section id="opinions-list">
+       <!--  <section id="opinions-list">
             <div class="container clearfix">
                 <div class="center">
                   <h2>Последни публикации</h2>
@@ -256,7 +256,7 @@
                 </div>
             </div>
         </section>
-
+ -->
         <section id="login-modal">
             <div class="container">
                 <div class="clearfix">

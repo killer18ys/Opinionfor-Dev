@@ -35,7 +35,9 @@
 						'email' => Input::get('email'),
 						'password' =>  Hash::make(Input::get('password'), $salt),
 						'salt' => $salt,
-						'name' => "",
+                        'name' => "",
+                        'bio' => "",
+						'gender' => "",
 						'joined' => date('Y-m-d H:i:s'),
 						'group' => 1
 					));
@@ -155,38 +157,3 @@
 	<?php include "/includes/head/bottom-scripts.php"; ?>
 
 </body>
-
-
-<!-- <form action="" method="post">
-	<div class="field">
-		<label for="username">Username</label>
-		<input type="text" name="username" id="username"  autocomplete="off">
-	</div>
-
-	<div class="field">
-		<label for="email">E-mail</label>
-		<input type="email" name="email" id="email"  autocomplete="off">
-	</div>
-
-	<div class="field">
-		<label for="password">Choose a password</label>
-		<input type="password" name="password" id="password" autocomplete="off">
-	</div>
-
-	<div class="field">
-		<label for="password_again">Enter your password again</label>
-		<input type="password" name="password_again" id="password_again" >
-	</div>
-
-	<div class="field">
-		<label for="name">Enter your name</label>
-		<input type="text" name="name" id="name" value="<?php echo  escape(Input::get('name')); ?>" >
-	</div>
-
-	<input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
-	<input type="submit" value="Register">
-
-</form>
-
-
- -->

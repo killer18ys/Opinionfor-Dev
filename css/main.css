@@ -1062,7 +1062,7 @@ p.forgot-password a:hover{
 
 #inner-main .form-container{
   width: 600px;
-  margin: 50px auto;
+  margin: 50px auto 20px;
 
 }
 
@@ -1118,14 +1118,15 @@ p.forgot-password a:hover{
 
 .question-wrapper p{
   display: inline-block;
-  width: 300px;
+  width: 107px;
+  margin: 20px 0 0 113px;
   line-height: 1.2;
 }
 
 
 .form-container input[type=submit]{
   display: block;
-  margin-top: 40px; 
+  margin: 41px auto 0;
   padding: 19px 39px 18px;
   background: #5fcf80;
   border-color: #3ac162;
@@ -1134,7 +1135,8 @@ p.forgot-password a:hover{
 }
 
 .form-container hr{
-  margin: 45px 0;
+  width: 95%;
+  margin: 55px 0 0 -12px;
 }
 
 
@@ -1267,6 +1269,18 @@ p.forgot-password a:hover{
   padding: 0 20px;
   margin-top: -20px;
   border-bottom: 2px solid #e9eaed;
+}
+
+.search-wrapper{
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #e9eaed;
+}
+
+.no-results{
+  padding: 100px 0;
+  font-size: 30px;
+  color: #e9eaed;
 }
 
 .profile-info-wrapper{
@@ -1438,6 +1452,11 @@ div.opinion-wrapper{
   margin-bottom: 25px;
   width: 300px;
   font: 13px/22px Arial,sans-serif;
+}
+
+.options{
+  overflow: auto;
+  height: 265px;
 }
 
 /* jQuery.Rating Plugin CSS - http://www.fyneworks.com/jquery/star-rating/ */

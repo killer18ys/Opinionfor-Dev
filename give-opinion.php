@@ -3,6 +3,7 @@ require_once 'core/init.php';
 
 $user = new User();
 $db = DB::getInstance();
+$db->query("SET NAMES utf8");
 
 if(!$user->isLoggedIn()){
 	Redirect::to('register.php');
@@ -13,6 +14,9 @@ if (Input::exists()) {
         $validate = new Validate();
         $items_to_validate = array(
             'category' => array(
+                'required' => true
+            ),
+            'opinion-field' => array(
                 'required' => true
             ),
             'q1' => array(
@@ -32,17 +36,18 @@ if (Input::exists()) {
             )
         );
 
-        array_push($items_to_validate, Category::get_validation_arr());
-
 
         $validation = $validate->check($_POST, $items_to_validate);
+
+        $category_name = $db->get("categories", array("id", "=", Input::get('category')))->first()->category;
 
         if ($validation->passed()) {
             try {
                     
                 $db->insert('opinions', array(
                     'user_id' => $user->data()->id,
-                    'category' => Category::get_path(),
+                    'category' => $category_name,
+                    'name' => Input::get('item-name'),
                     'opinion' => Input::get('opinion-field'),
                     'q1'=> Input::get('q1'),
                     'q2'=> Input::get('q2'),
@@ -107,7 +112,19 @@ if (Input::exists()) {
 
         <section id="inner-main">
             <div class="container">
-                <div class="container-large left">
+                <div class="container-small left">
+                    <nav class="side-nav">
+                        <div class="header item">Навигация</div>
+                        <div class="item clearfix">
+                            <a href="./feed.php">Мнения</a>
+                            <a class="selected" href="./give-opinion.php">Сподели мнение</a>
+                            <a href="./view-opinion.php">Потърси мнения</a>
+                        </div>                        
+                    </nav>
+                </div>
+
+
+                <div class="container-middle left">
                         
                     <h1 class="center">Споделете вашето мнение</h1>
                    <!--  <p class="center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam ullam assumenda deserunt!</p> -->
@@ -140,7 +157,7 @@ if (Input::exists()) {
                             
                             <div class="questions-section clearfix">
                                 <div class="question-wrapper">
-                                    <p>Доволни ли сте от продукта?</p>
+                                    <p>Местоположение</p>
                                     <div class="rating_stars_wrapper">
                                         <input class="star" type="radio" name="q1" value="1"/>
                                         <input class="star" type="radio" name="q1" value="2"/>
@@ -152,7 +169,7 @@ if (Input::exists()) {
                                 </div>
 
                                 <div class="question-wrapper">
-                                    <p>Колко точно стедоволен от продуктаааа?</p>
+                                    <p>Качество</p>
                                     <div class="rating_stars_wrapper">
                                         <input class="star" type="radio" name="q2" value="1"/>
                                         <input class="star" type="radio" name="q2" value="2"/>
@@ -163,7 +180,7 @@ if (Input::exists()) {
                                 </div>
                             
                                 <div class="question-wrapper">
-                                    <p>Колко точно стедоволен от продуктаааа?</p>
+                                    <p>Изгодно</p>
                                     <div class="rating_stars_wrapper">
                                         <input class="star" type="radio" name="q3" value="1"/>
                                         <input class="star" type="radio" name="q3" value="2"/>
@@ -174,7 +191,7 @@ if (Input::exists()) {
                                 </div>     
 
                                 <div class="question-wrapper">
-                                    <p>Колко точно стедоволен от продуктаааа?</p>
+                                    <p>Обслужване</p>
                                     <div class="rating_stars_wrapper">
                                         <input class="star" type="radio" name="q4" value="1"/>
                                         <input class="star" type="radio" name="q4" value="2"/>
@@ -185,7 +202,7 @@ if (Input::exists()) {
                                 </div>     
 
                                 <div class="question-wrapper">
-                                    <p>Колко точно стедоволен от продуктаааа?</p>
+                                    <p>Атмосфера</p>
                                     <div class="rating_stars_wrapper">
                                         <input class="star" type="radio" name="q5" value="1"/>
                                         <input class="star" type="radio" name="q5" value="2"/>
@@ -205,7 +222,7 @@ if (Input::exists()) {
                     </div>
                 </div>
 
-                <div class="container-small right">
+                <div class="container-small left">
                     <img src="img/temp-banner.jpg" alt="">
                 </div>
 

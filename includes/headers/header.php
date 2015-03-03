@@ -13,7 +13,7 @@
                     <li class="user-tag">
                         <a href="./settings-profile.php">
                             <img src="img/temp-profile-pic.jpg" alt="profile-pic">
-                            <span class="username"><?php echo escape($user->data()->username);?></span>
+                            <span class="username"> <?php echo escape($user->data()->username);?> </span>
                         </a>
                     </li>
                     <li class="separator"></li>
@@ -27,12 +27,11 @@
                             <div>
                                 <ul>
                                     <li><a href="./give-opinion.php">Сподели мнение</a></li>
-                                    <li><a href="./view-opinion.php">Виж мнения</a></li>
+                                    <li><a href="./view-opinion.php">Потърси мнения</a></li>
                                 </ul>    
 
                                 <ul>
                                     <li><a href="./settings-profile.php">Настройки</a></li>
-                                    <!-- <li><a href="#">Help</a></li> -->
                                     <li><a href="./logout.php">Изход</a></li>
                                 </ul>
                             </div>
