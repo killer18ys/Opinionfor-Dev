@@ -8,7 +8,7 @@ if(!$user->isLoggedIn()){
 }
 
 if(Session::exists('Error')){
-    echo '<p>' .Session::flash('Error') . '</p>';
+    echo '<p class="flash-message error">' .Session::flash('Error') . '</p>';
 }
 
 if (Input::exists()) {
@@ -16,20 +16,25 @@ if (Input::exists()) {
         $validate = new Validate();
         $validation = $validate->check($_POST, array(
             'name' => array(
+                'min' => 2,
+                'max' => 50
+            ),
+            'email' => array(
                 'required' => true,
                 'min' => 2,
                 'max' => 50
-            )
+            )            
         ));
 
         if ($validation->passed()) {
             try {
                 $user->update(array(
-                    'name' => Input::get('name')
+                    'name' => Input::get('name'),
+                    'email' => Input::get('email'),
 
                 ));
 
-                Session::flash('home', 'Your details have been updated.');
+                Session::flash('home', 'Личната ви информация беше обновена');
                 Redirect::to('feed.php');
 
             } catch (Exception $e) {
@@ -37,8 +42,8 @@ if (Input::exists()) {
             }
 
         }else{
-            foreach ($validation->errors() as $error) {
-                echo $error, '<br>';
+            foreach (array_reverse($validation->errors()) as $error) {
+                echo  "<p class=\"flash-message error\">". $error . "</p>";
             }
         }
     }
@@ -103,7 +108,7 @@ if (Input::exists()) {
                                                   ?>
                                                 </div>
                                                 <input id="select_image" type="file" name="imageToUpload">
-                                                <span class="btn btn-raised">Upload image</span>
+                                                <span class="btn btn-raised">Качи снимка</span>
                                         </form>
                                         </div>
                                     </div>
@@ -113,7 +118,11 @@ if (Input::exists()) {
                                                 <fieldset>
                                                     <label for="name">Име</label>
                                                     <div class="form-item">
-                                                        <label for="name">Enter your full name</label>
+                                                        <?php 
+                                                            if (!$user->data()->name) {
+                                                               echo  "<label for=\"name\">Въведете името си</label>";
+                                                            }
+                                                         ?>
                                                         <input type="text" class="light" value="<?php echo escape($user->data()->name); ?>" id="name" name="name">
                                                         <p class="error-message"></p>
                                                     </div>
@@ -127,7 +136,11 @@ if (Input::exists()) {
                                                 <fieldset>
                                                     <label for="email">Имейл адрес</label>
                                                     <div class="form-item">
-                                                       <label for="email">Имейл адрес</label>
+                                                        <?php 
+                                                            if (!$user->data()->email) {
+                                                                echo "<label for=\"email\">Имейл адрес</label>";
+                                                            }
+                                                        ?>
                                                         <input type="email" class="light" value="<?php echo escape($user->data()->email); ?>" id="email" name="email">
                                                        <p class="error-message"></p>
                                                     </div> 
@@ -138,7 +151,7 @@ if (Input::exists()) {
                                         <div class="clearfix buttons-wrapp">
 
                                             <div class="container-large right">
-                                                <input type="submit" class="btn btn-raised large green right" id="save_changes" value="Save changes">
+                                                <input type="submit" class="btn btn-raised large green right" id="save_changes" value="Запази промените">
                                                 <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
                                             </div>   
                                         </div>

@@ -63,7 +63,7 @@
             </header>
             
             <div class="form-wrapper">
-                <div class="social-login">
+                <!-- <div class="social-login">
                     <img src="img/temp-facebook-login.png" alt="facebook-login">
                     <img src="img/temp-google-login.png" alt="google-login">
 
@@ -79,7 +79,7 @@
                              M122.8,4.8h1.1c1.1,0,1.8-0.6,1.8-1.5c0-1-0.8-1.5-1.9-1.5c-0.5,0-0.9,0-1,0.1V4.8z"/>
                         </svg>
                     </div>
-                </div>
+                </div> -->
 
                 <form action="" method="post" autocomplete="off">
                     <fieldset>

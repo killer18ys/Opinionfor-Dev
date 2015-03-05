@@ -2,7 +2,7 @@
 require_once 'core/init.php';
 
 if(Session::exists('home')){
-	echo '<p>' .Session::flash('home') . '</p>';
+	echo '<p class="flash-message success">' .Session::flash('home') . '</p>';
 }
 
 $user = new User(); // current user

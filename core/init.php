@@ -19,28 +19,13 @@ $GLOBALS['config'] = array(
 );
 
 
-// spl_autoload_register(function($class){
-// 	require_once 'classes/' . $class . '.php';
-// });
 
+require_once 'functions/sanitize.php';
 
-//TODO !!!
-
-if(file_exists('sanitize.php')){
-	require_once 'sanitize.php';
-
-	spl_autoload_register(function($class){
-	require_once '../classes/' . $class . '.php';
-});
-
-}else{
-	require_once 'functions/sanitize.php';
-
-	spl_autoload_register(function($class){
+spl_autoload_register(function($class){
 	require_once 'classes/' . $class . '.php';
 });
 
-}
 
 if (Cookie::exists(Config::get('remember/cookie_name')) && !Session::exists(Config::get('session/session_name'))) {
 	$hash = Cookie::get(Config::get('remember/cookie_name'));

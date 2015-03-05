@@ -15,6 +15,9 @@ if (Input::exists()) {
         $items_to_validate = array(
             'category' => array(
                 'required' => true
+            ),            
+            'item-name' => array(
+                'required' => true
             ),
             'opinion-field' => array(
                 'required' => true
@@ -39,7 +42,11 @@ if (Input::exists()) {
 
         $validation = $validate->check($_POST, $items_to_validate);
 
-        $category_name = $db->get("categories", array("id", "=", Input::get('category')))->first()->category;
+        if(Input::get('category') != 0){
+              $category_name = $db->get("categories", array("id", "=",  Input::get('category')))->first()->category;
+        }
+
+       
 
         if ($validation->passed()) {
             try {
@@ -59,7 +66,7 @@ if (Input::exists()) {
 
                 ));
 
-                Session::flash('home', 'Your opinion was posted.');
+                Session::flash('home', 'Мнението ви беше пуликувано.');
                 Redirect::to('index.php');
 
             } catch (Exception $e) {
@@ -67,8 +74,8 @@ if (Input::exists()) {
             }
 
         }else{
-            foreach ($validation->errors() as $error) {
-                echo $error, '<br>';
+            foreach (array_reverse($validation->errors()) as $error) {
+                echo  "<p class=\"flash-message error\">". $error . "</p>";
             }
         }
     }

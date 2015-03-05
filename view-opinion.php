@@ -58,7 +58,7 @@ if(!$user->isLoggedIn()){
                     <form action="" method="POST" class="search-wrapper">
                         <fieldset>
                             <div class="form-item">
-                                <label for="search-field">Search</label>
+                                <label for="search-field">Търси</label>
                                 <input type="text" id="search-field" name="search-field">
                                 <input type="submit" class="btn btn-raised" id="search-btn" value="Търси" >
                                 <!-- <p class="error-message">This is required.</p> -->
@@ -91,10 +91,11 @@ if(!$user->isLoggedIn()){
                                 $post_time = split(" ", $opinion->post_date)[1];
                                 $post_date = split("-", $post_date);
                                 $post_date = $post_date[2] .'.' . $post_date[1] . '.' .$post_date[0];
+                                $avatar = $user_info->avatar ? $user_info->avatar : "profile-placeholder.png" ;
                                 
                                 echo "  <div class=\"opinion-wrapper left\">
                                             <div class=\"user-info clearfix\">
-                                                <img class=\"left\" src=\"img/layout/profile-placeholder.png\" alt=\"\">
+                                                <img class=\"left\" src=\"img/profile_picture/". $avatar ."\" alt=\"". $avatar ."\">
                                                 <div class=\"info left\">
                                                     <div class=\"name\">" . $user_info->name . "</div>
                                                     <div class=\"rating\">"; 

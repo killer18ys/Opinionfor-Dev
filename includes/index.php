@@ -42,7 +42,7 @@
                 </div>
                 
                 <div class="header-content">
-                    <h1 style="font-weight:700">Прочети &amp; Сподели <br> мнение за коли.</h1>
+                    <h1 style="font-weight:700">Прочети &amp; Сподели <br> мнение за всичко.</h1>
                     <h2 class="subheading">Дайте мнение или вижте какво мислят хората.</h2>
                     <a class="btn btn-raised left-btn" href="./give-opinion.php">Сподели</a>
                     <a class="btn btn-raised right-btn" href="./view-opinion.php">Прочети</a>
@@ -56,12 +56,12 @@
                     
                 <div class="feature feature-1 clearfix">
                     <div class="image">
-                        <img src="img/temp-feature-1-img.png" alt="">
+                        <img src="img/temp-feature-1-img.jpg" alt="">
                     </div>
 
                     <div class="proof-content">
                         <h3>Споделете мнение</h3>
-                        <p>Споделете мнение в над 1000 категории,от всички свери на живота създадени да бъдат полезни.Нашата библиотека е непрекъснато обновявана така, че никога да не иззостава.</p>
+                        <p>Споделете мнение в над 30 категории,от всички свери на живота създадени да бъдат полезни.Нашата библиотека е непрекъснато обновявана така, че никога да не иззостава.</p>
                         <a href="./give-opinion.php">
                             Напиши мнение
                             <span class="icon-arrow-right"></span>
@@ -76,14 +76,14 @@
 
                     <div class="proof-content">
                         <h3>Прочети какво мислят хората</h3>
-                        <p>Practice what you've learned through quizzes and interactive Code Challenges. This style of practicing will allow you to retain information you've learned so you can apply it to your own future projects.</p>
+                        <p>Това е единственото място в което можете да намерите толкова добре селектирани мнения.</p>
                         <a href="./view-opinion.php">
                             Публикувани мнения
                             <span class="icon-arrow-right"></span>
                         </a>
                     </div>
                 </div>
-                <div class="feature feature-3 clearfix">
+<!--                 <div class="feature feature-3 clearfix">
                     <div class="image">
                         <img src="img/temp-feature-3-img.png" alt="">
                     </div>
@@ -96,7 +96,7 @@
                             <span class="icon-arrow-right"></span>
                         </a>
                     </div>
-                </div>
+                </div> -->
 
             </div>
         </section>
@@ -270,7 +270,7 @@
                     <h2 class="left">Sign in</h2>           
                 </div>
 
-                <div class="social-login">
+             <!--    <div class="social-login">
                     <img src="img/temp-facebook-login.png" alt="facebook-login">
                     <img src="img/temp-google-login.png" alt="google-login">
 
@@ -287,9 +287,9 @@
                         </svg>
                     </div>
                 </div>
-                          
+                          --> 
                 <form method="post" action="">                              
-                    <fieldset>
+                    <fieldset style="margin-top:25px">
                         <div class="form-item">
                             <label for="username">Потребителско име</label>
                             <input type="text" id="username" name="username" autocomplete="off">

@@ -45,14 +45,14 @@
                     $login = $user->login(Input::get('username'), Input::get('password'), $remember);
 
                     if($login){
-                        Session::flash('Home', 'Your registration was successful!');
+                        Session::flash('Home', 'Регистрацията ви беше успешна');
                         Redirect::to('feed.php');
                     }
 
 			}else{
 
-				foreach ($validation->errors() as $error) {
-						echo $error . "<br>";
+				foreach (array_reverse($validation->errors()) as $error) {
+						echo  "<p class=\"flash-message error\">". $error . "</p>";
 					}	
 			}
 		}
@@ -86,7 +86,7 @@
             </header>
             
             <div class="form-wrapper">
-                <div class="social-login">
+           <!--      <div class="social-login">
                     <img src="img/temp-facebook-sign-up.png" alt="facebook-sign-up">
                     <img src="img/temp-google-sign-up.png" alt="google-sign-up">
 
@@ -102,7 +102,7 @@
                              M122.8,4.8h1.1c1.1,0,1.8-0.6,1.8-1.5c0-1-0.8-1.5-1.9-1.5c-0.5,0-0.9,0-1,0.1V4.8z"/>
                         </svg>
                     </div>
-                </div>
+                </div> -->
 
                 <form action="" method="post">
                     <fieldset>
@@ -146,7 +146,7 @@
                 </form>
 
                 <p class="note">
-                    By creating an account you agree to the Opinionfor <br> <a href="/terms">Terms of Service</a> and <a href="/privacy">Privacy Policy</a>.
+                    Чрез създаване на акаунт в Opinionfor вие се съгласявате с <br> <a href="/terms">Правила за ползване</a> and <a href="/privacy">Декларация за поверителност</a>.
                 </p>
             </div>
 

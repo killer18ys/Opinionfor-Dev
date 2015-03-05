@@ -157,6 +157,9 @@ $( document ).ready(function() {
 		});
 
 
+		$(".flash-message").delay(2000).fadeOut('slow', function() {
+			
+		});
 
 
 // Custom Select End

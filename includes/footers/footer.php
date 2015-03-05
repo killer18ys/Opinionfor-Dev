@@ -2,98 +2,67 @@
     <div class="container clearfix">
         <div class="column1">
             <div class="logo"></div>
-            <div class="copyrights">&copy; All rights reserved 2014. Opinonfor, Inc.</div>
+            <div class="copyrights">&copy; Всички права запазени 2015. Opinonfor, Inc.</div>
         </div>
 
         <ul class="column1">
             <li>
-                <h5>product</h5>
+                <h5>Пордукти</h5>
             </li>
             
             <li>
-                <a href="#">Home</a>
+                <a href="#">Начало</a>
             </li>
 
             <li>
-                <a href="#">Feature</a>
+                <a href="#">Реклама</a>
             </li>
 
             <li>
-                <a href="#">Plans & Pricing</a>
-            </li>
-
-            <li>
-                <a href="#">API</a>
-            </li>
-
-            <li>
-                <a href="#">Case Studies</a>
-            </li>
-
-            <li>
-                <a href="#">Affiliate Program</a>
+                <a href="#">Планове и цени</a>
             </li>
         </ul>
 
         <ul class="column1">
             <li>
-                <h5>support</h5>
+                <h5>Поддръжка</h5>
             </li>
             
             <li>
-                <a href="#">Support & FAQ</a>
+                <a href="#">За нас</a>
             </li>
 
             <li>
-                <a href="#">About Us</a>
-            </li>
-
-            <li>
-                <a href="#">Jobs</a>
-            </li>
-
-            <li>
-                <a href="#">Knowledge Base</a>
+                <a href="#">Работа</a>
             </li>
         </ul>
 
         <ul class="column1">
             <li>
-                <h5>other</h5>
+                <h5>Други</h5>
             </li>
             
             <li>
-                <a href="#">Terms of Service</a>
+                <a href="#">Правила за ползване</a>
             </li>
 
             <li>
-                <a href="#">Privacy Policy</a>
+                <a href="#">Декларация за поверителност</a>
             </li>
 
             <li>
-                <a href="#">Use of cookies</a>
+                <a href="#">Използване на cookies</a>
             </li>
 
             <li>
-                <a href="#">Blog</a>
+                <a href="#">Блог</a>
             </li>
 
-            <li>
-                <a href="#">iPhone</a>
-            </li>
-
-            <li>
-                <a href="#">Startups</a>
-            </li>
-
-            <li>
-                <a href="#">Appcase - App Store Optimization Tool</a>
-            </li>
         </ul>
 
         <ul class="column2 clearfix">
             <li>
-                <h5>follow us</h5>
+                <h5>Последвайте ни</h5>
             </li>
 
             <li>

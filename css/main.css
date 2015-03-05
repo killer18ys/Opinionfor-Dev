@@ -700,6 +700,7 @@ header#main-header.small-header{
 
 footer#footer{
   padding: 40px 0;
+  height: 215px;
   font-size: 13px;
   border-top: 1px solid #eeeff0;
   background: #22313F;
@@ -1298,7 +1299,7 @@ p.forgot-password a:hover{
 }
 
 .upload-img-wrapper span.btn{
-    padding: 5px 12px 4px;
+    padding: 5px 15px 4px; /*13*/
     background: #00b040;
     font-weight: 700;
     font-size: 13px;
@@ -1459,6 +1460,30 @@ div.opinion-wrapper{
   overflow: auto;
   height: 265px;
 }
+
+
+.flash-message{
+  position: absolute;
+  display: block;
+  width: 800px;
+  height: 50px;
+  top: 50px;
+  left: 50%;
+  margin-left: -400px;
+  border-radius: 5px;
+  line-height: 50px;
+  text-align: center;
+}
+
+.flash-message.success{
+  background: lightgreen;
+}
+
+.flash-message.error{
+  color: #fff;
+  background: #e74c3c;
+}
+
 
 /* jQuery.Rating Plugin CSS - http://www.fyneworks.com/jquery/star-rating/ */
 

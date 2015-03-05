@@ -57,16 +57,10 @@
                     'avatar' => basename( $_FILES["imageToUpload"]["name"])
             ));
 
-
+            //TODO
+             
             if (file_exists($prev_img)) {
-                Session::flash('Error', "bi trqbvalo da stane");
-                Redirect::to("settings-profile.php");
-
                 unlink($prev_img);
-
-            }else{
-                Session::flash('Error', "ZAshot ne staaa");
-                Redirect::to("settings-profile.php");
             }
 
 

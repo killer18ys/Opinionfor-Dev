@@ -45,7 +45,6 @@ class DB{
 			return $this;
 		}
 
-
 		public function action($action, $table, $where = array()){
 			if (count($where) === 3){
 				$operators = array('=', '>', '<', '>=', '<=');
@@ -70,8 +69,6 @@ class DB{
 			}
 			return false;
 		}
-
-
 
 		public function get($table, $where){
 			return $this->action('SELECT *', $table, $where);

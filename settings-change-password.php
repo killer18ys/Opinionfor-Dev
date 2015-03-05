@@ -29,7 +29,7 @@ if (Input::exists()) {
 
             if ($validation->passed()) {
                 if (Hash::make(Input::get('password_current'), $user->data()->salt) !== $user->data()->password) {
-                    echo 'Your current password is wrong';
+                    echo  "<p class=\"flash-message error\">Настоящата ви парола е грешна</p>";
                 }else{
                     $salt = Hash::salt(32);
                     $user->update(array(
@@ -37,14 +37,14 @@ if (Input::exists()) {
                         'salt' => $salt
                     ));
 
-                    Session::flash('home', 'Your password has been changed');
-                    Redirect::to('index.php');
+                    Session::flash('home', 'Паролата ви беше променена');
+                    Redirect::to('feed.php');
                 }
 
 
             }else{
-                foreach ($validation->errors() as $error) {
-                    echo $error, '<br>';
+                foreach (array_reverse($validation->errors()) as $error) {
+                   echo  "<p class=\"flash-message error\">". $error . "</p>";
                 }
             }
     }
@@ -113,7 +113,7 @@ if (Input::exists()) {
                                         <label for="possword_new_again">Нова парола отново</label>
                                         <div class="form-item">
                                             <label for="possword_new_again">Въведете новата парола отново</label>
-                                            <input type="password" class="light" id="possword_new_again" name="possword_new_again">
+                                            <input type="password" class="light" name="password_new_again" id="password_new_again">
                                             <p class="error-message"></p>
                                         </div>
                                     </fieldset>   

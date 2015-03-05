@@ -29,7 +29,7 @@ if (Input::exists()) {
 
 			if ($validation->passed()) {
 				if (Hash::make(Input::get('password_current'), $user->data()->salt) !== $user->data()->password) {
-					echo 'Your current password is wrong';
+					echo 'Настоящата ви парола е грешна';
 				}else{
 					$salt = Hash::salt(32);
 					$user->update(array(

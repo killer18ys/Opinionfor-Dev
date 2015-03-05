@@ -39,7 +39,6 @@ class User{
 		}
 	}
 
-
 	public function create($fields){
 		if (!$this->_db->insert('users' , $fields)) {
 			throw new Exception("There was a problem creating account");
@@ -58,8 +57,6 @@ class User{
 		}
 		return false;
 	}
-
-
 
 	public function login($username = null, $password = null, $remember = false){
 		
@@ -109,7 +106,6 @@ class User{
 		 }
 		 return false;
 	}
-
 
 	public function exists(){
 		return (!empty($this->data())) ? true : false;
